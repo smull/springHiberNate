@@ -4,10 +4,12 @@ import com.levelup.spring.dao.VariantRepository;
 import com.levelup.spring.model.Variant;
 import com.levelup.spring.service.VariantService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by java on 07.04.2015.
  */
+@Service
 public class VariantServiceImpl implements VariantService {
 
     @Autowired

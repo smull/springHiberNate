@@ -5,10 +5,12 @@ import com.levelup.spring.model.Category;
 import com.levelup.spring.model.Product;
 import com.levelup.spring.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by java on 07.04.2015.
  */
+@Service
 public class CategoryServiceImpl  implements CategoryService{
 
     @Autowired

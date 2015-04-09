@@ -6,12 +6,14 @@ import com.levelup.spring.model.Product;
 import com.levelup.spring.model.Variant;
 import com.levelup.spring.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Created by java on 07.04.2015.
  */
+@Service
 public class ProductServiceImpl implements ProductService {
 
 
