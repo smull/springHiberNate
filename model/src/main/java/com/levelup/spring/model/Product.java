@@ -1,13 +1,18 @@
 package com.levelup.spring.model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by java on 07.04.2015.
  */
+@Entity
+@Table(name = "PRODUCT")
 public class Product implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
 
     String article;
@@ -16,6 +21,11 @@ public class Product implements Serializable {
 
     Float mainPrice;
 
+    @ManyToOne
+    @JoinColumn(name = "CATEGORY_ID")
+    Category category;
+
+    @OneToMany(targetEntity = Variant.class, mappedBy = "product", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     List<Variant> variantList;
 
     public Product() {
@@ -54,6 +64,13 @@ public class Product implements Serializable {
     }
 
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
     public List<Variant> getVariantList() {
         return variantList;

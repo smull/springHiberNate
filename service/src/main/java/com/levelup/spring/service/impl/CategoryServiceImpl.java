@@ -4,16 +4,18 @@ import com.levelup.spring.dao.CategoryRepository;
 import com.levelup.spring.model.Category;
 import com.levelup.spring.model.Product;
 import com.levelup.spring.service.CategoryService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by java on 07.04.2015.
  */
-@Service
+@Service("categoryService")
 public class CategoryServiceImpl  implements CategoryService{
 
-    @Autowired
+    @Resource(name = "categoryRepository")
     CategoryRepository categoryRepository;
 
     @Override
@@ -22,8 +24,8 @@ public class CategoryServiceImpl  implements CategoryService{
     }
 
     @Override
-    public void createCategory(Category category) {
-        categoryRepository.createCategory(category);
+    public Category createCategory(String name) {
+       return categoryRepository.createCategory(name);
     }
 
     @Override
@@ -32,8 +34,8 @@ public class CategoryServiceImpl  implements CategoryService{
     }
 
     @Override
-    public void updateCategory(Category category) {
-        categoryRepository.updateCategory(category);
+    public Category updateCategory(String name) {
+        return categoryRepository.updateCategory(name);
     }
 
     @Override
@@ -45,4 +47,11 @@ public class CategoryServiceImpl  implements CategoryService{
     public void deleteProductById(Long id) {
         categoryRepository.deleteProductById(id);
     }
+
+    @Override
+    public List<Category> getAllCategories() {
+        return categoryRepository.getAllCategories();
+    }
+
+
 }

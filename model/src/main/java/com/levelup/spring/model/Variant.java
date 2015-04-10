@@ -1,12 +1,17 @@
 package com.levelup.spring.model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
  * Created by java on 07.04.2015.
  */
+@Entity
+@Table(name = "VARIANT")
 public class Variant implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
 
     String color;
@@ -14,6 +19,10 @@ public class Variant implements Serializable {
     String size;
 
     Float price;
+
+    @ManyToOne
+    @JoinColumn(name = "PRODUCT_ID")
+    Product product;
 
     public Variant() {
     }
@@ -48,5 +57,14 @@ public class Variant implements Serializable {
 
     public void setPrice(Float price) {
         this.price = price;
+    }
+
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }

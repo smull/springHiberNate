@@ -1,18 +1,23 @@
 package com.levelup.spring.model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by java on 07.04.2015.
  */
-
+@Entity
+@Table(name = "CATEGORY")
 public class Category implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
 
     String name;
 
+    @OneToMany(targetEntity = Product.class, mappedBy = "category", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     List<Product> productList;
 
     public Category() {

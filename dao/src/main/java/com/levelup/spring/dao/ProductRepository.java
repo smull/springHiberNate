@@ -16,12 +16,11 @@ public interface ProductRepository {
 
     Product getProductByArticle(String article);
 
-    List<Product> getallProduct();
+    List<Product> getAllProduct();
 
-    List<Product> getAllProductByCategory(Category category);
+    List<Product> getAllProductByCategory(String category);
 
-    void createProduct(Product product);
-
+    void createProduct(String article, String description, Float mainPrice, Category category);
     void deleteProductById(Long id);
 
     void updateProduct(Product product);

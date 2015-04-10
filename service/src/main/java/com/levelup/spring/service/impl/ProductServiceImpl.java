@@ -20,6 +20,9 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     ProductRepository productRepository;
 
+
+
+
     @Override
     public Product getProductById(Long id) {
         return productRepository.getProductById(id);
@@ -36,13 +39,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getAllProductByCategory(Category category) {
-        return null;
+    public List<Product> getAllProductByCategory(String category) {
+        return productRepository.getAllProductByCategory(category);
     }
 
     @Override
-    public void createProduct(Product product) {
-
+    public void createProduct(String article, String description, Float mainPrice,Category category) {
+        productRepository.createProduct(article, description, mainPrice, category);
     }
 
     @Override
