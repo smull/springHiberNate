@@ -28,17 +28,17 @@ public class VariantServiceImpl implements VariantService {
 
     @Override
     public Variant getVariantByPrice(Float price) {
-        return null;
+        return variantRepository.getVariantByPrice(price);
     }
 
     @Override
     public Variant getVariantByMaxPrice() {
-        return null;
+        return variantRepository.getVariantByMaxPrice();
     }
 
     @Override
     public Variant getVariantByMinPrice() {
-        return null;
+        return variantRepository.getVariantByMinPrice();
     }
 
     @Override
@@ -49,5 +49,22 @@ public class VariantServiceImpl implements VariantService {
     @Override
     public Variant getVariantByColor(Variant variant, String color) {
         return null;
+    }
+
+    @Override
+    public Long createVariant(Variant variant) {
+        variantRepository.createVariant(variant);
+        return variant.getId();
+    }
+
+    @Override
+    public Variant updateVariant(Variant variant) {
+        variantRepository.updateVariant(variant);
+        return variant;
+    }
+
+    @Override
+    public void deleteVariantById(Long variantId) {
+        variantRepository.deleteVariantById(variantId);
     }
 }

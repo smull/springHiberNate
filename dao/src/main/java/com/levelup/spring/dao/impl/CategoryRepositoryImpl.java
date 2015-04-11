@@ -24,19 +24,14 @@ public class CategoryRepositoryImpl  implements CategoryRepository{
 
     @Override
     public Category getCategoryById(Long id) {
-        Query query = entityManager.createQuery("SELECT c FROM Category c WHERE c.id = :categoryId");
-        query.setParameter("categoryId",id);
-
-        Category category = (Category) query.getSingleResult();
+        Category category = entityManager.find(Category.class, id);
         return category;
     }
 
     @Override
-    public Category createCategory(String name) {
-        Category category = new Category();
-        category.setName(name);
+    public Long createCategory(Category category) {
         entityManager.persist(category);
-        return category;
+        return category.getId();
     }
 
     @Override
@@ -48,10 +43,8 @@ public class CategoryRepositoryImpl  implements CategoryRepository{
     }
 
     @Override
-    public Category updateCategory(String name) {
-        Category category = new Category();
-        category.setName(name);
-        entityManager.persist(category);
+    public Category updateCategory(Category category) {
+        entityManager.merge(category);
         return category;
     }
 
@@ -86,14 +79,15 @@ public class CategoryRepositoryImpl  implements CategoryRepository{
 
 
     @Override
-    public void createProduct(Product product) {
-
+    public Long createProduct(Product product) {
+        return  null;
     }
 
     @Override
     public void deleteProductById(Long id) {
 
     }
+
 
 
 

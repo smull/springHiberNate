@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.List;
 
 /**
@@ -21,36 +22,79 @@ public class VariantRepositoryImpl implements VariantRepository {
 
     @Override
     public Variant getVariantById(Long id) {
-        return null;
+        Variant variant = entityManager.find(Variant.class, id);
+        return variant;
     }
 
     @Override
     public Variant getVariantByName(String name) {
+        Query query1 = entityManager.createQuery("SELECT v FROM Variant v WHERE v.name = :name");
+        query1.setParameter("name", name);
+        Variant variant = (Variant) query1.getSingleResult();
+        if(variant==null)return null;
         return null;
     }
 
     @Override
     public Variant getVariantByPrice(Float price) {
-        return null;
+        Query query1 = entityManager.createQuery("SELECT v FROM Variant v WHERE v.price = :price");
+        query1.setParameter("price", price);
+        Variant variant = (Variant) query1.getSingleResult();
+        if(variant==null)return null;
+        return variant;
     }
 
     @Override
     public Variant getVariantByMaxPrice() {
-        return null;
+        Query query1 = entityManager.createQuery("SELECT MIN(price) AS SmallestOrderPrice FROM Variant");
+        Variant variant = (Variant) query1.getSingleResult();
+        if(variant==null)return null;
+        return variant;
     }
 
     @Override
     public Variant getVariantByMinPrice() {
-        return null;
+        Query query1 = entityManager.createQuery("SELECT MAX(price) AS BiggestOrderPrice FROM Variant");
+        Variant variant = (Variant) query1.getSingleResult();
+        if(variant==null)return null;
+        return variant;
     }
 
     @Override
-    public Variant getVariantBySize(Variant variant, String size) {
-        return null;
+    public Variant getVariantBySize(String size) {
+        Query query1 = entityManager.createQuery("SELECT v FROM Variant v WHERE v.size = :size");
+        query1.setParameter("size", size);
+        Variant variant = (Variant) query1.getSingleResult();
+        if(variant==null)return null;
+        return variant;
     }
 
     @Override
-    public Variant getVariantByColor(Variant variant, String color) {
-        return null;
+    public Variant getVariantByColor( String color) {
+        Query query1 = entityManager.createQuery("SELECT v FROM Variant v WHERE v.color = :color");
+        query1.setParameter("color", color);
+        Variant variant = (Variant) query1.getSingleResult();
+        if(variant==null)return null;
+        return variant;
+    }
+
+    @Override
+    public Long createVariant(Variant variant) {
+        entityManager.persist(variant);
+        return variant.getId();
+    }
+
+    @Override
+    public Variant updateVariant(Variant variant) {
+        entityManager.merge(variant);
+        return variant;
+    }
+
+    @Override
+    public void deleteVariantById(Long variantId) {
+        Variant variant = getVariantById(variantId);
+        if(variant != null) {
+            entityManager.remove(variant);
+        }
     }
 }

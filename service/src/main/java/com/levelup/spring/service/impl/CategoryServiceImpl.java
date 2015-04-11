@@ -24,8 +24,9 @@ public class CategoryServiceImpl  implements CategoryService{
     }
 
     @Override
-    public Category createCategory(String name) {
-       return categoryRepository.createCategory(name);
+    public Long createCategory(Category category) {
+        categoryRepository.createCategory(category);
+        return category.getId();
     }
 
     @Override
@@ -34,8 +35,8 @@ public class CategoryServiceImpl  implements CategoryService{
     }
 
     @Override
-    public Category updateCategory(String name) {
-        return categoryRepository.updateCategory(name);
+    public Category updateCategory(Category category) {
+        return categoryRepository.updateCategory(category);
     }
 
     @Override

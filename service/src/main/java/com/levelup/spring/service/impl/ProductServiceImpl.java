@@ -22,7 +22,6 @@ public class ProductServiceImpl implements ProductService {
 
 
 
-
     @Override
     public Product getProductById(Long id) {
         return productRepository.getProductById(id);
@@ -35,26 +34,28 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> getallProduct() {
-        return null;
+        return productRepository.getAllProduct();
     }
 
     @Override
-    public List<Product> getAllProductByCategory(String category) {
-        return productRepository.getAllProductByCategory(category);
+    public List<Product> getAllProductByCategory(Long categoryId) {
+        return productRepository.getAllProductByCategory(categoryId);
     }
 
     @Override
-    public void createProduct(String article, String description, Float mainPrice,Category category) {
-        productRepository.createProduct(article, description, mainPrice, category);
+    public Long createProduct(Product product) {
+        productRepository.createProduct(product);
+        return product.getId();
     }
 
     @Override
     public void deleteProductById(Long id) {
-
+        productRepository.deleteProductById(id);
     }
 
     @Override
-    public void updateProduct(Product product) {
-
+    public Product updateProduct(Product product) {
+        productRepository.updateProduct(product);
+        return  product;
     }
 }

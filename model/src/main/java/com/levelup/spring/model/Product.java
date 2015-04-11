@@ -13,6 +13,7 @@ public class Product implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="ID_PRODUCT")
     Long id;
 
     String article;
@@ -21,11 +22,12 @@ public class Product implements Serializable {
 
     Float mainPrice;
 
-    @ManyToOne
-    @JoinColumn(name = "CATEGORY_ID")
-    Category category;
+    @Column(name = "CATEGORY_ID")
+    private Long categoryId;
 
-    @OneToMany(targetEntity = Variant.class, mappedBy = "product", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+
+    @OneToMany(targetEntity = Variant.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name="PRODUCT_ID", referencedColumnName = "ID_PRODUCT")
     List<Variant> variantList;
 
     public Product() {
@@ -35,7 +37,7 @@ public class Product implements Serializable {
         return id;
     }
 
-    public void setId(Long id) {
+    private void setId(Long id) {
         this.id = id;
     }
 
@@ -64,12 +66,12 @@ public class Product implements Serializable {
     }
 
 
-    public Category getCategory() {
-        return category;
+    public Long getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
 
     public List<Variant> getVariantList() {

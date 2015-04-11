@@ -12,6 +12,7 @@ public class Variant implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="ID_VARIANT")
     Long id;
 
     String color;
@@ -20,9 +21,8 @@ public class Variant implements Serializable {
 
     Float price;
 
-    @ManyToOne
-    @JoinColumn(name = "PRODUCT_ID")
-    Product product;
+    @Column(name = "PRODUCT_ID")
+    private Long productId;
 
     public Variant() {
     }
@@ -31,7 +31,7 @@ public class Variant implements Serializable {
         return id;
     }
 
-    public void setId(Long id) {
+    private void setId(Long id) {
         this.id = id;
     }
 
@@ -60,11 +60,11 @@ public class Variant implements Serializable {
     }
 
 
-    public Product getProduct() {
-        return product;
+    public Long getProductId() {
+        return productId;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 }

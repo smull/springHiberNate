@@ -18,11 +18,11 @@ public interface ProductService {
 
     List<Product> getallProduct();
 
-    List<Product> getAllProductByCategory(String category);
+    List<Product> getAllProductByCategory(Long categoryId);
 
-    void createProduct(String article, String description, Float mainPrice, Category category);
+    Long createProduct(Product product);
 
     void deleteProductById(Long id);
 
-    void updateProduct(Product product);
+    Product updateProduct(Product product);
 }

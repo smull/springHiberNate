@@ -18,9 +18,15 @@ public interface VariantRepository {
 
     Variant getVariantByMinPrice();
 
-    Variant getVariantBySize(Variant variant, String  size);
+    Variant getVariantBySize(String  size);
 
-    Variant getVariantByColor(Variant variant, String color);
+    Variant getVariantByColor(String color);
+
+    Long createVariant(Variant variant);
+
+    Variant updateVariant(Variant variant);
+
+    void deleteVariantById(Long variantId);
 
 
 }

@@ -13,11 +13,14 @@ public class Category implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="ID_CATEGORY")
     Long id;
 
     String name;
 
-    @OneToMany(targetEntity = Product.class, mappedBy = "category", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+
+    @OneToMany(targetEntity = Product.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name="CATEGORY_ID", referencedColumnName = "ID_CATEGORY")
     List<Product> productList;
 
     public Category() {
@@ -27,7 +30,7 @@ public class Category implements Serializable {
         return id;
     }
 
-    public void setId(Long id) {
+    private void setId(Long id) {
         this.id = id;
     }
 

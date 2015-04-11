@@ -28,7 +28,8 @@ public class CategoryController {
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody List<Category> getAllCategory() {
+    @ResponseBody
+    public List<Category> getAllCategory() {
         List<Category> categoryList = categoryService.getAllCategories();
         return  categoryList;
     }

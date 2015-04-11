@@ -12,11 +12,11 @@ public interface CategoryService {
 
     Category getCategoryById(Long id);
 
-    Category createCategory(String name);
+    Long createCategory(Category category);
 
     void deleteCategoryById(Long  id);
 
-    Category updateCategory(String name);
+    Category updateCategory(Category category);
 
     void createProduct(Product product);
 

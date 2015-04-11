@@ -23,10 +23,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public Product getProductById(Long id) {
-        Query query = entityManager.createQuery("SELECT p FROM Product p WHERE p.id = :productId");
-        query.setParameter("productId", id);
-
-        Product product = (Product) query.getSingleResult();
+        Product product = entityManager.find(Product.class, id);
         return product;
     }
 
@@ -47,21 +44,17 @@ public class ProductRepositoryImpl implements ProductRepository {
     }
 
     @Override
-    public List<Product> getAllProductByCategory(String category) {
-        Query query1 = entityManager.createQuery("SELECT p FROM Product p WHERE p.category.name = :category");
-        query1.setParameter("category",category);
-        List<Product> products = query1.getResultList();
+    public List<Product> getAllProductByCategory(Long categoryId) {
+        Query query = entityManager.createNamedQuery("from Product p where p.catagoryId = :categoryId");
+        query.setParameter("categoryId",categoryId);
+        List<Product> products = query.getResultList();
         return products;
     }
 
     @Override
-    public void createProduct(String article, String description, Float mainPrice, Category category) {
-        Product product = new Product();
-        product.setArticle(article);
-        product.setDescription(description);
-        product.setMainPrice(mainPrice);
-        product.setCategory(category);
+    public Long createProduct(Product product) {
         entityManager.persist(product);
+        return product.getId();
     }
 
     @Override
@@ -72,12 +65,10 @@ public class ProductRepositoryImpl implements ProductRepository {
         }
     }
 
-//    private Product findProduct(Long id){
-//        return entityManager.find(Product.class, id);
-//    }
 
     @Override
-    public void updateProduct(Product product) {
-
+    public Product updateProduct(Product product) {
+        entityManager.merge(product);
+        return product;
     }
 }
