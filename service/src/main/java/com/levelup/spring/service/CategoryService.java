@@ -14,7 +14,7 @@ public interface CategoryService {
 
     Long createCategory(Category category);
 
-    void deleteCategoryById(Long  id);
+    void deleteCategory(Category category);
 
     Category updateCategory(Category category);
 
@@ -23,4 +23,6 @@ public interface CategoryService {
     void deleteProductById(Long id);
 
     List<Category> getAllCategories();
+
+    Category getCategoryByName(String name);
 }

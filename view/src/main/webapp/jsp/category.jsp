@@ -14,17 +14,35 @@
   <title>Category</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
   <link rel="stylesheet" href="${content}/css/reset.css">
   <link rel="stylesheet" href="${content}/css/animate.css">
   <link rel="stylesheet" href="${content}/css/styles.css">
+
   <link rel="icon" href="http://vladmaxi.net/favicon.ico" type="image/x-icon">
   <link rel="shortcut icon" href="http://vladmaxi.net/favicon.ico" type="image/x-icon">
+
+  <script src="/js/jquery-1.11.2.js"></script>
+  <script src="/js/main.js"></script>
 </head>
 <body>
 
 
   <div>Create category</div>
+  <div>Name Category</div>
+  <input type="text" name="nameCategory" id="nameCategory"/>
+
   <div>Delete category</div>
+  <select>
+    <c:forEach var="cat" items="${allCategories}">
+        <option id="categoryName">"${cat.nameCategory}"</option>
+    </c:forEach>
+  </select>
+  <div>
+    <input type="button" name="deleteCateg" id="deleteCateg" value="Delete">
+  </div>
+
+
   <div>Choose category</div>
   <%--<div id="container">--%>
     <%--<form>--%>

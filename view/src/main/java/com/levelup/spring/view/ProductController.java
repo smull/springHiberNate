@@ -10,11 +10,10 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+
+import javax.persistence.Entity;
 import java.util.List;
 
 /**
@@ -63,7 +62,15 @@ public class ProductController {
 
     @RequestMapping("/main")
     public String getCategoryView(Model model){
+        List<Category> allCategories = categoryService.getAllCategories();
+        model.addAttribute("allCategories",allCategories);
         return "category";
+    }
+
+    @RequestMapping("/deleteCategory")
+    public void deleteCategory(@RequestParam String nameCategory){
+        Category category = categoryService.getCategoryByName(nameCategory);
+        categoryService.deleteCategory(category);
     }
 
     @RequestMapping(value = "/allCategory", method = RequestMethod.GET)
@@ -71,6 +78,12 @@ public class ProductController {
     public List<Category> getAllCategory() {
         List<Category> categoryList = categoryService.getAllCategories();
         return  categoryList;
+    }
+
+    @RequestMapping("/getCategory")
+    public Category getCategoryByName(@RequestParam String nameCategory){
+        Category category = categoryService.getCategoryByName(nameCategory);
+        return  category;
     }
 
 }

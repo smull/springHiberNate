@@ -12,15 +12,17 @@ public interface CategoryRepository {
 
     Category getCategoryById(Long id);
 
+    Category getCategoryByName(String name);
+
     Long createCategory(Category category);
 
-    void deleteCategoryById(Long  id);
+    void deleteCategory(Category  category);
 
     Category updateCategory(Category category);
 
     Long createProduct(Product product);
 
-    void deleteProductById(Long id);
+     void deleteProductById(Long id);
 
     List<Category> getAllCategories();
 }

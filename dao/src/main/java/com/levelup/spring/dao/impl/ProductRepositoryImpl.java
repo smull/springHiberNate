@@ -45,7 +45,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public List<Product> getAllProductByCategory(Long categoryId) {
-        Query query = entityManager.createNamedQuery("from Product p where p.catagoryId = :categoryId");
+        Query query = entityManager.createQuery("SELECT p FROM Product p WHERE p.categoryId = :categoryId");
         query.setParameter("categoryId",categoryId);
         List<Product> products = query.getResultList();
         return products;

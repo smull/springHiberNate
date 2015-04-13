@@ -30,8 +30,8 @@ public class CategoryServiceImpl  implements CategoryService{
     }
 
     @Override
-    public void deleteCategoryById(Long id) {
-        categoryRepository.deleteCategoryById(id);
+    public void deleteCategory(Category category) {
+        categoryRepository.deleteCategory(category);
     }
 
     @Override
@@ -46,7 +46,7 @@ public class CategoryServiceImpl  implements CategoryService{
 
     @Override
     public void deleteProductById(Long id) {
-        categoryRepository.deleteProductById(id);
+
     }
 
     @Override
@@ -54,5 +54,8 @@ public class CategoryServiceImpl  implements CategoryService{
         return categoryRepository.getAllCategories();
     }
 
-
+    @Override
+    public Category getCategoryByName(String name) {
+        return categoryRepository.getCategoryByName(name);
+    }
 }

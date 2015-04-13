@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,8 +36,7 @@ public class CategoryRepositoryImpl  implements CategoryRepository{
     }
 
     @Override
-    public void deleteCategoryById(Long id) {
-        Category category = getCategoryById(id);
+    public void deleteCategory(Category category) {
         if(category != null) {
             entityManager.remove(category);
         }
@@ -50,11 +50,11 @@ public class CategoryRepositoryImpl  implements CategoryRepository{
 
     private void init() {
         Category category = new Category();
-        category.setName("Computer");
+        category.setNameCategory("Computer");
         entityManager.persist(category);
 
         category = new Category();
-        category.setName("Clothes");
+        category.setNameCategory("Clothes");
         entityManager.persist(category);
 
         Product product = new Product();
@@ -72,7 +72,7 @@ public class CategoryRepositoryImpl  implements CategoryRepository{
     @Override
     public List<Category> getAllCategories() {
         init();
-        Query query = entityManager.createNativeQuery("SELECT * FROM Category",Category.class);
+        Query query = entityManager.createQuery("FROM Category");
         List<Category> categoryList = query.getResultList();
         return categoryList;
     }
@@ -88,7 +88,15 @@ public class CategoryRepositoryImpl  implements CategoryRepository{
 
     }
 
-
-
-
+    @Override
+    public Category getCategoryByName(String nameCategory) {
+        Query query = entityManager.createQuery("FROM Category c WHERE c.nameCategory = :nameCategory");
+        query.setParameter("nameCategory", nameCategory);
+        List<Category> categories = query.getResultList();
+        Category category = null;
+        if(!categories.isEmpty())
+            category = categories.get(0);
+//        Category category = (Category) query.getSingleResult();
+        return category;
+    }
 }
