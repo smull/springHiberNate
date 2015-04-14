@@ -37,8 +37,9 @@ public class CategoryRepositoryImpl  implements CategoryRepository{
 
     @Override
     public void deleteCategory(Category category) {
-        if(category != null) {
-            entityManager.remove(category);
+        Category category1 = getCategoryById(category.getId());
+        if(category1 != null) {
+            entityManager.remove(category1);
         }
     }
 
@@ -90,13 +91,12 @@ public class CategoryRepositoryImpl  implements CategoryRepository{
 
     @Override
     public Category getCategoryByName(String nameCategory) {
-        Query query = entityManager.createQuery("FROM Category c WHERE c.nameCategory = :nameCategory");
-        query.setParameter("nameCategory", nameCategory);
+//        Query query = entityManager.createQuery("FROM Category c WHERE c.nameCategory = :nameCategory");
+//        query.setParameter("nameCategory", nameCategory);
+//        List<Category> categories = query.getResultList();
+        Query query = entityManager.createQuery("from Category c where c.nameCategory = :nameCategory").
+                setParameter("nameCategory", nameCategory);
         List<Category> categories = query.getResultList();
-        Category category = null;
-        if(!categories.isEmpty())
-            category = categories.get(0);
-//        Category category = (Category) query.getSingleResult();
-        return category;
+        return categories.get(0);
     }
 }

@@ -35,7 +35,7 @@
   <div>Delete category</div>
   <select>
     <c:forEach var="cat" items="${allCategories}">
-        <option id="categoryName">"${cat.nameCategory}"</option>
+        <option id="categoryName">${cat.nameCategory}</option>
     </c:forEach>
   </select>
   <div>

@@ -43,22 +43,22 @@ public class ProductController {
         return  productService.getAllProductByCategory(id);
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.PUT)
-    @ResponseBody
-    public ResponseEntity<String> createProduct(@RequestParam String article,
-                                                @RequestParam String description,
-                                                @RequestParam Float mainPrice,
-                                                @RequestParam Long categoryId) {
-        Product product = new Product();
-
-        product.setArticle(article);
-        product.setDescription(description);
-        product.setMainPrice(mainPrice);
-        product.setCategoryId(categoryId);
-
-        Long id = productService.createProduct(product);
-        return new ResponseEntity<String>(id.toString(), HttpStatus.OK);
-    }
+//    @RequestMapping(value = "/create", method = RequestMethod.PUT)
+//    @ResponseBody
+//    public ResponseEntity<String> createProduct(@RequestParam String article,
+//                                                @RequestParam String description,
+//                                                @RequestParam Float mainPrice,
+//                                                @RequestParam Long categoryId) {
+//        Product product = new Product();
+//
+//        product.setArticle(article);
+//        product.setDescription(description);
+//        product.setMainPrice(mainPrice);
+//        product.setCategoryId(categoryId);
+//
+//        Long id = productService.createProduct(product);
+//        return new ResponseEntity<String>(id.toString(), HttpStatus.OK);
+//    }
 
     @RequestMapping("/main")
     public String getCategoryView(Model model){
@@ -80,10 +80,33 @@ public class ProductController {
         return  categoryList;
     }
 
+    @RequestMapping(value = "allProducts", method = RequestMethod.POST)
+    @ResponseBody
+    public List<Product> getAllProduct() {
+        List<Product> productList = productService.getallProduct();
+        return  productList;
+    }
+
     @RequestMapping("/getCategory")
     public Category getCategoryByName(@RequestParam String nameCategory){
         Category category = categoryService.getCategoryByName(nameCategory);
         return  category;
     }
+
+    @RequestMapping("/create")
+    public String create(Model model){
+        List<Product> products = productService.getallProduct();
+        model.addAttribute("products",products);
+        return  "create.page";
+    }
+
+    @RequestMapping(value = "save", method = RequestMethod.POST,produces = "application/json")
+    public @ResponseBody Product save(@RequestBody Product product){
+        Product product1 = new Product();
+        product1 = product;
+        productService.createProduct(product1);
+        return  product1;
+    }
+
 
 }
