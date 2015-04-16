@@ -80,7 +80,7 @@ public class ProductController {
         return  categoryList;
     }
 
-    @RequestMapping(value = "allProducts", method = RequestMethod.POST)
+    @RequestMapping(value = "/allProducts", method = RequestMethod.POST)
     @ResponseBody
     public List<Product> getAllProduct() {
         List<Product> productList = productService.getallProduct();

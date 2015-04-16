@@ -3,11 +3,14 @@ $(document).ready(function(){
     console.log("222");
     setInterval(function () {
         $.ajax({
-            url: 'allProducts',
+            url: '/product/allProducts',
             dataType: 'json',
+            contentType: "application/json; charset=utf-8",
+            type: "POST",
             success: function (data) {
                 $('#tbody').html('');
                 //charts = data;
+                console.log("3333");
                 for (var i = 0; i < data.length; i++) {
                     var tr = "<tr id=" + data[i]["article"] + ">";
                     var td1 = "<td id='article'>" + data[i]["article"] + "</td>";

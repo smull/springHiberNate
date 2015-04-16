@@ -30,24 +30,28 @@
       <%--<th colspan="9"><span class="users-label">--%>
                     <%--<spring:message code="products"/></span></th>--%>
     <%--</tr>--%>
-    <tr>
-      <th>Article</th>
-      <th>Description</th>
-      <th>MainPrice</th>
-      <th>CategoryId</th>
-      <%--<th><spring:message code="label.tel"/></th>--%>
-      <%--<th><spring:message code="label.email"/></th>--%>
-      <%--<th><spring:message code="label.login"/></th>--%>
-      <%--<th><spring:message code="label.category"/></th>--%>
-    </tr>
-    <c:forEach items="${products}" var="product">
-      <tr id="${product.article}">
-        <td>${product.article}</td>
-        <td>${product.description}</td>
-        <td>${product.mainPrice}</td>
-        <td>${product.categoryId}</td>
-      </tr>
-    </c:forEach>
+      <thead>
+          <tr>
+            <th>Article</th>
+            <th>Description</th>
+            <th>MainPrice</th>
+            <th>CategoryId</th>
+            <%--<th><spring:message code="label.tel"/></th>--%>
+            <%--<th><spring:message code="label.email"/></th>--%>
+            <%--<th><spring:message code="label.login"/></th>--%>
+            <%--<th><spring:message code="label.category"/></th>--%>
+          </tr>
+      </thead>
+      <tbody id="tbody">
+          <c:forEach items="${products}" var="product">
+            <tr id="${product.article}">
+              <td>${product.article}</td>
+              <td>${product.description}</td>
+              <td>${product.mainPrice}</td>
+              <td>${product.categoryId}</td>
+            </tr>
+          </c:forEach>
+      </tbody>
   </table>
 
 <%--<table>--%>
