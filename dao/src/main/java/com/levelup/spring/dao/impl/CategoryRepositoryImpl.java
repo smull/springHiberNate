@@ -1,5 +1,6 @@
 package com.levelup.spring.dao.impl;
 
+import com.levelup.spring.dao.AbstractRepository;
 import com.levelup.spring.dao.CategoryRepository;
 import com.levelup.spring.model.Category;
 import com.levelup.spring.model.Product;
@@ -17,8 +18,7 @@ import java.util.List;
  * Created by java on 07.04.2015.
  */
 @Repository("categoryRepository")
-@Transactional
-public class CategoryRepositoryImpl  implements CategoryRepository{
+public class CategoryRepositoryImpl extends AbstractRepository<Category> implements CategoryRepository{
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -99,4 +99,8 @@ public class CategoryRepositoryImpl  implements CategoryRepository{
         List<Category> categories = query.getResultList();
         return categories.get(0);
     }
+
+
+
+
 }

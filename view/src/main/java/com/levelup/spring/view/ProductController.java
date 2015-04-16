@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 import javax.persistence.Entity;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,6 +29,9 @@ public class ProductController {
 
     @Autowired
     CategoryService categoryService;
+
+    private Integer begin;
+    private Integer end = 5;
 
 
 
@@ -80,11 +84,23 @@ public class ProductController {
         return  categoryList;
     }
 
-    @RequestMapping(value = "/allProducts", method = RequestMethod.POST)
+    @RequestMapping(value = "allProducts", method = RequestMethod.POST)
     @ResponseBody
     public List<Product> getAllProduct() {
-        List<Product> productList = productService.getallProduct();
-        return  productList;
+//        List<Product> productListAll = productService.getallProduct();
+        List<Product> productListAll = productService.getProductTenRow(begin,end);
+        begin = end;
+        end += 5;
+
+//        List<Product> productList = new ArrayList<>();
+//        productList = productListAll.subList(begin,end);
+//        begin = end;
+//        if((end+5) < productListAll.size()) {
+//            end += 5;
+//        } else {
+//            end = productListAll.size();
+//        }
+        return  productListAll;
     }
 
     @RequestMapping("/getCategory")
@@ -102,10 +118,10 @@ public class ProductController {
 
     @RequestMapping(value = "save", method = RequestMethod.POST,produces = "application/json")
     public @ResponseBody Product save(@RequestBody Product product){
-        Product product1 = new Product();
-        product1 = product;
-        productService.createProduct(product1);
-        return  product1;
+//        Product product1 = new Product();
+//        product1 = product;
+        productService.create(product);
+        return  product;
     }
 
 

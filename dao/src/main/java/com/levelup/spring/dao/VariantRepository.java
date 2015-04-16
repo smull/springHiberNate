@@ -29,4 +29,14 @@ public interface VariantRepository {
     void deleteVariantById(Long variantId);
 
 
+
+    public Variant getById(Long id, Class entityClass);
+
+    public Variant create(Variant object);
+
+    public Variant update(Variant object);
+
+    public boolean delete(Long id, Class entityClass);
+
+
 }

@@ -58,4 +58,29 @@ public class ProductServiceImpl implements ProductService {
         productRepository.updateProduct(product);
         return  product;
     }
+
+    @Override
+    public Product getById(Long id, Class entityClass) {
+        return productRepository.getById(id,Product.class);
+    }
+
+    @Override
+    public Product create(Product object) {
+        return productRepository.create(object);
+    }
+
+    @Override
+    public Product update(Product object) {
+        return productRepository.update(object);
+    }
+
+    @Override
+    public boolean delete(Long id, Class entityClass) {
+        return productRepository.delete(id,Product.class);
+    }
+
+    @Override
+    public List<Product> getProductTenRow(Integer begin, Integer end) {
+        return productRepository.getProductTenRow(begin, end);
+    }
 }

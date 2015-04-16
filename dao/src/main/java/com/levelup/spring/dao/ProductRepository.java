@@ -25,4 +25,15 @@ public interface ProductRepository {
     void deleteProductById(Long id);
 
     Product updateProduct(Product product);
+
+    List<Product> getProductTenRow(Integer begin, Integer end);
+
+    public Product getById(Long id, Class entityClass);
+
+    public Product create(Product object);
+
+    public Product update(Product object);
+
+    public boolean delete(Long id, Class entityClass);
+
 }

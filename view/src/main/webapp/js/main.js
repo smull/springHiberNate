@@ -1,9 +1,14 @@
 $(document).ready(function(){
 
+
+    ShowResult();
+
     console.log("222");
-    setInterval(function () {
+    function ShowResult() {
+        console.log("4444");
+        //setInterval(function () {
         $.ajax({
-            url: '/product/allProducts',
+            url: 'allProducts',
             dataType: 'json',
             contentType: "application/json; charset=utf-8",
             type: "POST",
@@ -21,7 +26,12 @@ $(document).ready(function(){
                 }
             }
         });
-    }, 500);
+        //}, 500);
+    };
+    $("#nextPage").click(function()  {
+
+        ShowResult();
+    });
 
 
 

@@ -54,6 +54,8 @@
       </tbody>
   </table>
 
+  <input type="button" id="nextPage" name="nextPage" value="Next">
+
 <%--<table>--%>
   <%--<thead>--%>
     <%--<th>Id</th><th>Account Number</th><th>Amount</th><th>Date</th><th>Edit transaction</th>--%>

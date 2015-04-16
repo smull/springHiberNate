@@ -1,5 +1,6 @@
 package com.levelup.spring.dao.impl;
 
+import com.levelup.spring.dao.AbstractRepository;
 import com.levelup.spring.dao.VariantRepository;
 import com.levelup.spring.model.Variant;
 import org.springframework.stereotype.Repository;
@@ -14,8 +15,7 @@ import java.util.List;
  * Created by java on 07.04.2015.
  */
 @Repository("variantRepository")
-@Transactional
-public class VariantRepositoryImpl implements VariantRepository {
+public class VariantRepositoryImpl extends AbstractRepository<Variant> implements VariantRepository {
 
     @PersistenceContext
     private EntityManager entityManager;

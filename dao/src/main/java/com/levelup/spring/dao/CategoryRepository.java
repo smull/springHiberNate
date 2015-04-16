@@ -25,4 +25,14 @@ public interface CategoryRepository {
      void deleteProductById(Long id);
 
     List<Category> getAllCategories();
+
+
+    public Category getById(Long id, Class entityClass);
+
+    public Category create(Category object);
+
+    public Category update(Category object);
+
+    public boolean delete(Long id, Class entityClass);
+
 }

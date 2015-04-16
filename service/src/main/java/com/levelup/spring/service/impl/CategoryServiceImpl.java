@@ -58,4 +58,25 @@ public class CategoryServiceImpl  implements CategoryService{
     public Category getCategoryByName(String name) {
         return categoryRepository.getCategoryByName(name);
     }
+
+
+    @Override
+    public Category getById(Long id, Class entityClass) {
+        return categoryRepository.getById(id,Category.class);
+    }
+
+    @Override
+    public Category create(Category object) {
+        return categoryRepository.create(object);
+    }
+
+    @Override
+    public Category update(Category object) {
+        return categoryRepository.update(object);
+    }
+
+    @Override
+    public boolean delete(Long id, Class entityClass) {
+        return categoryRepository.delete(id,Category.class);
+    }
 }

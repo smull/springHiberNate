@@ -67,4 +67,25 @@ public class VariantServiceImpl implements VariantService {
     public void deleteVariantById(Long variantId) {
         variantRepository.deleteVariantById(variantId);
     }
+
+
+    @Override
+    public Variant getById(Long id, Class entityClass) {
+        return variantRepository.getById(id,Variant.class);
+    }
+
+    @Override
+    public Variant create(Variant object) {
+        return variantRepository.create(object);
+    }
+
+    @Override
+    public Variant update(Variant object) {
+        return variantRepository.update(object);
+    }
+
+    @Override
+    public boolean delete(Long id, Class entityClass) {
+        return variantRepository.delete(id,Variant.class);
+    }
 }
