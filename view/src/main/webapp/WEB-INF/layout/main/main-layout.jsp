@@ -12,7 +12,8 @@
    <title><tiles:getAsString name="main.title"></tiles:getAsString></title>
    <link rel="stylesheet" href="/css/main.css"/>
    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-   <script src="/js/main.js"></script>
+   <%--<script src="/js/main.js"></script>--%>
+   <script src="/js/account.js"></script>
    <%--<script src="/js/trans.js"></script>--%>
 </head>
 <body>

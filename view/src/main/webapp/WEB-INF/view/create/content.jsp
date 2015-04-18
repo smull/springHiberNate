@@ -20,7 +20,6 @@
       <div><input type="text" id="mainPrice" name="mainPrice"/></div>
     <div> categoryId</div>
       <div><input type="text" id="categoryId" name="categoryId"/></div>
-
     <input type="button" id="save" name="save" value="Save"/>
   </form>
 
