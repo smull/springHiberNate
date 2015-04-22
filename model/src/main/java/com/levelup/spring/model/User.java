@@ -1,17 +1,18 @@
 package com.levelup.spring.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by java on 21.04.2015.
  */
-//@Entity
-//@Table(name = "USER")
-public class User {
+@Entity
+@Table(name = "USER")
+public class User implements Serializable{
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    Long id;
 
     String name;
 
@@ -22,13 +23,13 @@ public class User {
     public User() {
     }
 
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

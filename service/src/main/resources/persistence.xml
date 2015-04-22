@@ -6,6 +6,7 @@
         <class>com.levelup.spring.model.Product</class>
         <class>com.levelup.spring.model.Variant</class>
         <class>com.levelup.spring.model.Account</class>
+        <class>com.levelup.spring.model.User</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <validation-mode>NONE</validation-mode>
         <properties>

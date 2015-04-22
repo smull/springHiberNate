@@ -3,8 +3,8 @@
         "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
         "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-    <definition name="user.page" extends="main.page">
+    <definition name="page2.page" extends="main.page">
         <put-attribute name="main.title" value="User Create Page" />
-        <put-attribute name="main.content" value="/WEB-INF/view/user/content.jsp" />
+        <put-attribute name="main.content" value="/WEB-INF/view/page2/content.jsp" />
     </definition>
 </tiles-definitions>
