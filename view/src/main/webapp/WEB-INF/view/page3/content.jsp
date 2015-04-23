@@ -32,7 +32,7 @@
           <div><c:out value='<%=((User)request.getSession().getAttribute("user")).getLastName()%>'/></div>
           <div><c:out value='<%=((User)request.getSession().getAttribute("user")).getPid()%>'/></div>
 
-        <input type="submit" formaction="/user/wizard2"  id = "previousStep2" name= "previousStep2" value="Previous">
+        <input type="submit" formaction="/user/wizard2" id = "previousStep2" name= "previousStep2" value="Previous">
         <input type="submit" id="finish" name="finish" value="Finish">
       </form>
 

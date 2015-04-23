@@ -1,0 +1,12 @@
+#form1 {
+    margin: 0 auto;
+    position: relative;
+    width: 620px;
+    text-indent: 0px;
+}
+#form2 {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -60px;
+}
