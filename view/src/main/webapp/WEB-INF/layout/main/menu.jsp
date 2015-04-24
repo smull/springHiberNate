@@ -7,8 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="menu-content">
-  <ul>
-    <li><a href="#"> Main</a></li>
-    <li><a href="#"> About</a></li>
-  </ul>
+  <%--<ul>--%>
+    <%--<li><a href="#"> Main</a></li>--%>
+    <%--<li><a href="#"> About</a></li>--%>
+  <%--</ul>--%>
 </div>

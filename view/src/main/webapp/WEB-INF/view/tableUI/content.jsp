@@ -16,37 +16,48 @@
 </head>
 <body>
 
-    <div id="form1">
-    <div>Create user-Wizard</div>
-    <div>Step 1</div>
-    <%--<form action="/user/wizard2" method="post" id="formStep1">--%>
-        <div>Name</div>
-        <%--<input type="text" id="name" name="name" value="${user.name}">--%>
-        <input type="text" id="name" name="name"value='<%=((User)request.getSession().getAttribute("user")).getName()%>'/>
 
-        <div>LastName</div>
-        <%--<input type="text" id="lastName" name="lastName" value="${user.lastName}">--%>
-        <input type="text" id="lastName" name="lastName" value='<%=((User)request.getSession().getAttribute("user")).getLastName()%>'/>
+    <%--<form  action="/user/save" method="post" id="form">--%>
+    <form id="form">
+        <div class="font-my">Create user-Wizard</div>
+        <div id="step-one">
+        <div class="font-my">Step 1</div>
 
-        <div></div>
-        <input type="button" id="nextStep1" name="nextStep1" value="Next">
-    <%--</form>--%>
-    </div>
+            <input type="text" id="name" name="name"
+                   <c:if test="${not empty user.name}">value="${user.name}" disabled </c:if>/>
+            <label for="name">Name</label><Br>
+
+            <br><br>
+            <input type="text" id="lastName" name="lastName"
+                   <c:if test="${not empty user.lastName}">value="${user.lastName}" disabled </c:if>/>
+            <label for="lastName">LastName</label><Br>
 
 
-    <form  action="/user/save" method="post" id="form2" style="display: none" >
-      <div>Step 2</div>
-      <div>PID</div>
-      <input type="text" id="pid" name="pid" value="${user.pid}">
-      <div></div>
-      <input type="button"  id="previous" name="previous" value="Back">
-      <input type="button" id="nextStep2" name="nextStep2" value="Next">
+            <br><br>
+            <input type="button" id="nextStep1" name="nextStep1" value="Next">
+        <%--</form>--%>
+        </div>
+
+
+        <div id="step-two" style="display: none">
+          <div class="font-my">Step 2</div>
+
+          <input type="text" id="pid" name="pid"
+                 <c:if test="${not empty user.pid}">value="${user.pid}" disabled </c:if>/>
+          <label for="pid">PID</label><Br>
+
+          <br><br>
+          <input type="button"  id="previous" name="previous" value="Back">
+          <input type="button" id="nextStep2" name="nextStep2" value="Next">
+        </div>
     </form>
 
 
 
     <div id="formStep3" style="display: none">
-        <table class="user-table">
+
+        <table class="bordered">
+        <caption class="font-my">User</caption>
             <thead>
             <tr>
                 <th>Name</th>
@@ -56,10 +67,10 @@
             </thead>
             <tbody id="form3">
             <%--<c:forEach items="${user}" var="userW">--%>
-                <tr id="${user.id}">
-                    <td>${user.name}</td>
-                    <td>${user.lastName}</td>
-                    <td>${user.pid}</td>
+                <tr id=${user.name}>
+                    <td id="name-user"></td>
+                    <td id="lastName-user"></td>
+                    <td id="pid-user"></td>
                 </tr>
             <%--</c:forEach>--%>
             </tbody>

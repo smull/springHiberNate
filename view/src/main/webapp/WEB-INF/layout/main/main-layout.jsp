@@ -12,8 +12,10 @@
    <title><tiles:getAsString name="main.title"></tiles:getAsString></title>
    <link rel="stylesheet" href="/css/main.css"/>
    <link rel="stylesheet" href="/css/tableUI.css">
+   <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+   <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
    <%--<script src="/js/main.js"></script>--%>
    <%--<script src="/js/user.js"></script>--%>
    <script src="/js/tableUI.js"></script>

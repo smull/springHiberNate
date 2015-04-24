@@ -51,41 +51,44 @@ public class UserController {
 //    }
 
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<User> save(@RequestBody User user,
-                                     Model model) {
-        User user1 = new User();
-        user1 = user;
-//        user1.setName(name);
-//        user1.setLastName(lastName);
-//        user1.setPid(pid);
+//    @RequestMapping(value = "/save", method = RequestMethod.POST, consumes = "application/json")
+//    public @ResponseBody ResponseEntity<User> save(@RequestBody User user
+//                                     ) {
+//        User user1 = new User();
+//        user1 = user;
+////        user1.setName(name);
+////        user1.setLastName(lastName);
+////        user1.setPid(pid);
+//
+//
+//        //model.addAttribute("user",user1);
+//        //model.addAttribute("user",user);
+//        //User user2 = (User) request.getSession().getAttribute("user");
+//        //userService.create(user2);
+//
+////        HttpSession session = request.getSession();
+////        session.removeAttribute("user");
+//
+////        status.setComplete();
+//
+////        return "page3.page";
+////        return "tableUI.page";
+//        return new ResponseEntity<User>(user, HttpStatus.OK);
+//    }
 
-
-        model.addAttribute("user",user1);
-        //model.addAttribute("user",user);
-        //User user2 = (User) request.getSession().getAttribute("user");
-        //userService.create(user2);
-
-//        HttpSession session = request.getSession();
-//        session.removeAttribute("user");
-
-//        status.setComplete();
-
-//        return "page3.page";
-//        return "tableUI.page";
-        return new ResponseEntity<User>(user, HttpStatus.OK);
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public  ResponseEntity<User> save(@ModelAttribute User user ) {
+        return new ResponseEntity<User>(user,HttpStatus.OK);
     }
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public String getIndexPage(Model model) {
-        User user = new User();
-        user.setName("");
-        user.setLastName("");
-        user.setPid("");
-        if(!model.containsAttribute("user")) {
-            model.addAttribute("user", user);
-        }
+    public String getIndexPage() {
         return "tableUI.page";
+    }
+
+    @ModelAttribute("user")
+    public User getUser(){
+        return new User();
     }
 
 
